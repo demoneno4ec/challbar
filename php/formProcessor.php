@@ -1,8 +1,8 @@
 <?php
-if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
+if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
    die("error");
 }
-function fileContentsToVar($file,$customerGreatings){
+function fileContentsToVar($file, $customerGreatings){
     ob_start();
     require($file);
     return ob_get_clean();
