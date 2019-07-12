@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'include/prolog_before.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/include/prolog_before.php';
 ?>
 <footer>
     <div class="wrapper">
