@@ -14,6 +14,6 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/include/prolog_before.php';
 
     <div class="header__phone">
         <span><a href="tel:88002501505">8 800 250 15 05</a></span>
-        <a data-fancybox data-src="#modal" href="#" title="Заказать звонок" href="#" class="callback">Заказать звонок</a>
+        <a data-fancybox data-src="#modal" href="#" title="Заказать звонок" href="#" class="callback link-modal-form" data-title="Заказать звонок">Заказать звонок</a>
     </div>
 </header>

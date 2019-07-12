@@ -1,6 +1,6 @@
 <?php
 if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
-   die("error");
+    header('Location: '.'/');
 }
 function fileContentsToVar($file, $customerGreatings){
     ob_start();
@@ -19,6 +19,7 @@ $fields = array(
 	"investammount"	=>	["Объем инвестиций","Investicii",false],
 );
 $thankYouPage = false;
+
 foreach ($_REQUEST as $reqFieldName => $value) {
 	if ($reqFieldName == "thank_you")
 	{
@@ -53,18 +54,15 @@ $htmlBody .= "</body></html>";
 
 $goodStatus = ($thankYouPage) ? 2 : 1;
 
-if (mail($sendto, $subject, $htmlBody, $headers))
-{
-	if (file_exists("customerEmailTPL.php") && $goodStatus == 1 && !empty($fields["email"][2]))
-	{
-		// Можно назначить произвольный заголовок для письма клиенту
-		$customerSubject  = "Вы подали заявку на лендинге «Chalbar»";
-		$customerGreatings = (!empty($fields["name"][2])) ? "Добрый день, ".$fields["name"][2]."." : "Добрый день!";
-		$customerBody = fileContentsToVar("customerEmailTPL.php",$customerGreatings);
-		mail($fields["email"][2], $customerSubject, $customerBody, $headers);
-	}
-	echo $goodStatus;
-}
-else{
-	echo 1;
+if (mail($sendto, $subject, $htmlBody, $headers)) {
+    if (file_exists('customerEmailTPL.php') && $goodStatus === 1 && !empty($fields['email'][2])) {
+        // Можно назначить произвольный заголовок для письма клиенту
+        $customerSubject = "Вы подали заявку на лендинге «Chalbar»";
+        $customerGreatings = (!empty($fields["name"][2])) ? "Добрый день, ".$fields["name"][2]."." : "Добрый день!";
+        $customerBody = fileContentsToVar("customerEmailTPL.php", $customerGreatings);
+        mail($fields["email"][2], $customerSubject, $customerBody, $headers);
+    }
+    echo $goodStatus;
+} else {
+    echo 1;
 }

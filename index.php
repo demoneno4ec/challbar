@@ -19,9 +19,10 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
                     <a data-fancybox data-src="#modal" 
                       href="#" 
                       title="Скачать презентацию" 
-                      class="btn"
+                      class="btn link-modal-form"
                       rel="norefferer noopener"
                       target="_blank"
+                      data-title="Скачать презентацию"
                     >Скачать презентацию</a>
                     <span class="file-size">PDF <?=$page->getFileSize($_SERVER['DOCUMENT_ROOT'].'/doc/mk.pdf')?></span>
                   </div>
@@ -217,9 +218,10 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
                 <a data-fancybox data-src="#modal" 
                   href="#" 
                   title="Полная программа поддержки" 
-                  class="btn btn-b"
+                  class="btn btn-b link-modal-form"
                   rel="norefferer noopener"
-                  target="_blank" 
+                  target="_blank"
+                  data-title="Полная программа поддержки"
                 >Полная программа поддержки</a>
                 <span class="file-size">PDF <?=$page->getFileSize($_SERVER['DOCUMENT_ROOT'].'/doc/mk.pdf')?></span>
               </div>
@@ -326,14 +328,25 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
     <div class="modal__box" id="modal">
         <span class="h3__title" id="modalTitle"></span>
 
-        <form>
-            <input type="text" placeholder="Ваше имя" name="name" autocomplete="off" required />
-            <input type="text" placeholder="Ваш телефон" name="phone" autocomplete="off" required />
-            <input type="text" placeholder="Ваш email" name="email" autocomplete="off" required />
+        <form class="index-form" action="/php/formIndex.php" method="post">
+            <input type="hidden"
+               name="form-name"
+               value=""
+            />
+            <input type="text"
+               name="form[name]"
+               placeholder="Ваше имя" autocomplete="off" required />
+            <input type="text"
+               name="form[phone]"
+               placeholder="Ваш телефон"  autocomplete="off" required />
+            <input type="email"
+               name="form[email]"
+               placeholder="Ваш email" autocomplete="off" required />
 
             <button type="submit">Отправить</button>
 
-            <input id="check1" type="checkbox" checked /><label for="check1">Нажимая на кнопку «Отправить», я даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности</label>
+            <input id="check1" type="checkbox" name="form[politic]" checked/>
+            <label for="check1">Нажимая на кнопку «Отправить», я даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности</label>
 
             <div class="preload__box">
                 <div class="flex align-item">

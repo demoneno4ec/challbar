@@ -28,7 +28,7 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
                 <span id="thanksNameModal" class="h3__title">Спасибо!</span>
                 <p>В ближайшее время мы обработаем Вашу заявку. Для того, чтобы наш специалист мог максимально подробно ответить на все Ваши вопросы, заполните, пожалуйста, следующую форму. Заранее благодарим!</p>
 
-                <form>
+                <form class="thanks-form">
                     <span>Введите Ваш город:</span>
                     <input type="text" id="city" name="city" autocomplete="off" />
 

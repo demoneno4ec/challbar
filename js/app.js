@@ -28,10 +28,15 @@ $(document).ready(function() {
         showMaskOnHover: false
     });
 
+    $('input[name="form[phone]"]').inputmask({
+      "mask": "+ 7 (999) 999-9999",
+      showMaskOnHover: false
+    });
+
     $(function(){
-      var $elems = $('.animateblock');
-      var winheight = $(window).height();
-      var fullheight = $(document).height();
+      let $elems      = $('.animateblock');
+      let winheight   = $(window).height();
+      let fullheight  = $(document).height();
       
       $(window).scroll(function(){
         animate_elems();
@@ -56,14 +61,68 @@ $(document).ready(function() {
       } // end animate_elems()
     });
 
+    $('a.link-modal-form').on('click', function () {
+      let $this = $(this);
+      let titleForm = $this.data('title');
+      let inputTitle = $('#modal form input[name="form-name"]');
+      if (!!titleForm && !!inputTitle){
+        inputTitle.val(titleForm);
+      }
+    });
 
-    // Form Process
-    $(document).on("submit","form", function(event){
+    $(document).on('submit', '.index-form', function (event) {
       event.preventDefault();
-      var submitedFrom = $(this)
-      var data  = submitedFrom.serializeArray();
-      var formData = new FormData();
-      var preloader = submitedFrom.find("div.preload__box");
+      let submitedFrom = $(this);
+      let action = submitedFrom.prop('action');
+      let method = submitedFrom.prop('method');
+      let data = submitedFrom.serializeArray();
+      let preloader = submitedFrom.find("div.preload__box");
+      if (preloader === undefined) {
+        preloader = false;
+      }
+
+      $.ajax({
+        type        : method,
+        url         : action,
+        data        : data,
+        dataType    : "json",
+        beforeSend  : function () {
+          if (preloader) {
+            preloader.show();
+          }
+        },
+        success     : function (resp) {
+          let status = resp.status;
+          let errors = resp.errors,
+            message = resp.message;
+          if (status === 'success'){
+            window.location.href = "thanks.php"
+          } else if(!!errors){
+            $.each(errors, function(name, error){
+              let nameInput = 'input[name="form[' + name + ']"]';
+
+              let inputError = submitedFrom.find(nameInput);
+              if(!!inputError){
+                inputError.addClass('error');
+              }
+            });
+
+            if (preloader) {preloader.hide();}
+          }else{
+            alert("Something was wrong. Please, contact administrator.")
+            if (preloader) {preloader.hide();}
+          }
+        }
+      });
+      return false;
+    });
+
+    $(document).on('submit', '.thanks-form', function (event) {
+      event.preventDefault();
+      let submitedFrom = $(this);
+      let data  = submitedFrom.serializeArray();
+      let formData = new FormData();
+      let preloader = submitedFrom.find("div.preload__box");
       if (preloader == undefined) { preloader = false;}
 
       setStoredItem('name', getField("name",data));
@@ -78,7 +137,7 @@ $(document).ready(function() {
       {
         data.push({name:"city", value:getStoredItem("city")});
       }
-      for (var i = data.length - 1; i >= 0; i--) {
+      for (let i = data.length - 1; i >= 0; i--) {
         formData.append(data[i].name,data[i].value);
       }
 
@@ -95,7 +154,6 @@ $(document).ready(function() {
         },
         success: function(resp)
         {
-          console.log(resp);
           if (resp == 1)
           {
             window.location.href = "thanks.php"
@@ -114,7 +172,64 @@ $(document).ready(function() {
       });
       return false;
     });
+    /* old
+    // Form Process
+    $(document).on("submit","form", function(event){
+      event.preventDefault();
+      let submitedFrom = $(this);
+      let data  = submitedFrom.serializeArray();
+      let formData = new FormData();
+      let preloader = submitedFrom.find("div.preload__box");
+      if (preloader == undefined) { preloader = false;}
 
+      setStoredItem('name', getField("name",data));
+      setStoredItem('city', getField("city",data));
+
+      if (!getField("name",data)&&getStoredItem("name")!="false"&&getStoredItem("name"))
+      {
+        data.push({name:"name", value:getStoredItem("name")});
+      }
+
+      if (!getField("city",data)&&getStoredItem("city")!="false"&&getStoredItem("city"))
+      {
+        data.push({name:"city", value:getStoredItem("city")});
+      }
+      for (let i = data.length - 1; i >= 0; i--) {
+        formData.append(data[i].name,data[i].value);
+      }
+
+
+      $.ajax({
+        type: "POST",
+        url: "php/formProcessor.php",
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        beforeSend: function() {
+          if (preloader) {preloader.show();}
+        },
+        success: function(resp)
+        {
+          if (resp == 1)
+          {
+            window.location.href = "thanks.php"
+          }
+          else if (resp == 2)
+          {
+            $("button[data-fancybox-close]").trigger("click");
+            if (preloader) {preloader.hide();}
+          }
+          else
+          {
+            alert("Something was wrong. Please, contact administrator.")
+            if (preloader) {preloader.hide();}
+          }
+        }
+      });
+      return false;
+    });
+*/
     if (document.getElementById("thanksNameModal") != undefined)
     {
       $("#formCaller").trigger("click");
