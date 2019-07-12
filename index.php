@@ -1,14 +1,14 @@
 <?php
 define('SHOW_PAGE', true);
-require_once $_SERVER['DOCUMENT_ROOT'].'include/prolog_before.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'include/header.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/include/prolog_before.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/include/header.php';
 $page->setTitle('«Chalbar» - франшиза бар, кальянная, ресторан в «закрытом формате»!');
 ?>
     <body>
         <div id="main">
             <div class="heading__box">
               <div class="wrapper">
-                <?php require_once $_SERVER['DOCUMENT_ROOT'].'include/header-row.php';?>
+                <?php require_once $_SERVER['DOCUMENT_ROOT'].'/include/header-row.php';?>
                 <div class="flex direction">
                   <div class="heading__block">
 
@@ -367,5 +367,5 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
             <noscript><div><img src="https://mc.yandex.ru/watch/54279862" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
             <!-- /Yandex.Metrika counter -->
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'include/footer.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/include/footer.php';
 ?>

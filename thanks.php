@@ -1,13 +1,13 @@
 <?php
 define('SHOW_PAGE', true);
-require_once $_SERVER['DOCUMENT_ROOT'].'include/header.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/include/header.php';
 $page->setTitle('«Chalbar» - франшиза бар, кальянная, ресторан в «закрытом формате»!');
 ?>
     <body class="thanks">
         <div id="main">
             <div class="heading__box">
               <div class="wrapper">
-                <?php require_once $_SERVER['DOCUMENT_ROOT'].'include/header-row.php';?>
+                <?php require_once $_SERVER['DOCUMENT_ROOT'].'/include/header-row.php';?>
                 <div class="flex direction">
                   <div class="heading__block">
                     <div class="heading__flex">
@@ -49,5 +49,5 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
                 </form>
             </div>
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'include/footer.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/include/footer.php';
 ?>
