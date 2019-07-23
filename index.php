@@ -292,7 +292,7 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
                         <input type="text" placeholder="Ваш e-mail" name="form[email]" autocomplete="off" required />
                       </div>
 
-                      <div class="col-md-3">
+                      <div class="col-md-2">
                         <input type="text" placeholder="Ваш город" name="form[city]" autocomplete="off" required />
                       </div>
 
