@@ -279,6 +279,10 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
 
                 <div class="section7__form">
                   <form class="index-form" action="/php/formIndex.php" method="post">
+                      <input type="hidden"
+                             name="form-name"
+                             value="Как начать сотрудничать"
+                      />
                     <div class="row">
                       <div class="col-md-3">
                         <input type="text" placeholder="Ваше имя" name="form[name]" autocomplete="off" required />
@@ -303,7 +307,20 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
                      
                     <input id="check2" type="checkbox" checked  name="form[politic]"/>
                     <label for="check2">Нажимая на кнопку «Отправить заявку», я даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности</label>
-
+                      <div class="preload__box">
+                          <div class="flex align-item">
+                              <div id="floatingCirclesG">
+                                  <div class="f_circleG" id="frotateG_01"></div>
+                                  <div class="f_circleG" id="frotateG_02"></div>
+                                  <div class="f_circleG" id="frotateG_03"></div>
+                                  <div class="f_circleG" id="frotateG_04"></div>
+                                  <div class="f_circleG" id="frotateG_05"></div>
+                                  <div class="f_circleG" id="frotateG_06"></div>
+                                  <div class="f_circleG" id="frotateG_07"></div>
+                                  <div class="f_circleG" id="frotateG_08"></div>
+                              </div>
+                          </div>
+                      </div>
                   </form>
                 </div>
 
@@ -336,7 +353,7 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
         <form class="index-form" action="/php/formIndex.php" method="post">
             <input type="hidden"
                name="form-name"
-               value=""
+               value="Заказать звонок"
             />
             <input type="text"
                name="form[name]"
