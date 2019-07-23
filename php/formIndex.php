@@ -23,6 +23,11 @@ if (!empty($form)){
         $arErrors['name'] = 'Имя указано не верно';
     }
 
+    $city = strip_tags($form['city']);
+    if (empty($city)){
+        $arErrors['city'] = 'Город указан не верно';
+    }
+
     $phone = clearPhone($form['phone']);
     $phone = checkPhone($phone) ? $phone : '';
     if (empty($phone)){
