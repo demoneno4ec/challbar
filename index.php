@@ -278,26 +278,31 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
                 <p>Мы считаем, бизнес должен быть честным. Поэтому не продаём франшизу <br />без предварительного анализа франчайзи. Свяжитесь с нами, проведём <br />анализ вашего заведения и рассчитаем финансовую модель. Это бесплатно.</p>
 
                 <div class="section7__form">
-                  <form>
+                  <form class="index-form" action="/php/formIndex.php" method="post">
                     <div class="row">
-                      <div class="col-md-4">
-                        <input type="text" placeholder="Ваше имя" name="name" autocomplete="off" required />
+                      <div class="col-md-3">
+                        <input type="text" placeholder="Ваше имя" name="form[name]" autocomplete="off" required />
                       </div>
 
-                      <div class="col-md-4">
-                        <input type="text" placeholder="Ваш телефон" name="phone" autocomplete="off" required />
+                      <div class="col-md-3">
+                        <input type="text" placeholder="Ваш телефон" name="form[phone]" autocomplete="off" required />
                       </div>
 
-                      <div class="col-md-4">
-                        <input type="text" placeholder="Ваш e-mail" name="email" autocomplete="off" required />
+                      <div class="col-md-3">
+                        <input type="text" placeholder="Ваш e-mail" name="form[email]" autocomplete="off" required />
                       </div>
 
-                      <div class="col-md-4">
+                      <div class="col-md-3">
+                        <input type="text" placeholder="Ваш город" name="form[city]" autocomplete="off" required />
+                      </div>
+
+                      <div class="col-md-2">
                         <button type="submit">отправить заявку</button>
                       </div>
                     </div>
                      
-                    <input id="check2" type="checkbox" checked /><label for="check2">Нажимая на кнопку «Отправить заявку», я даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности</label>
+                    <input id="check2" type="checkbox" checked  name="form[politic]"/>
+                    <label for="check2">Нажимая на кнопку «Отправить заявку», я даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности</label>
 
                   </form>
                 </div>
