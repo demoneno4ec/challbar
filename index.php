@@ -360,7 +360,7 @@ $page->setTitle('«Chalbar» - франшиза бар, кальянная, ре
                placeholder="Ваше имя" autocomplete="off" required />
             <input type="text"
                    name="form[city]"
-                   placeholder="Ваше город" autocomplete="off" required />
+                   placeholder="Ваш город" autocomplete="off" required />
             <input type="text"
                name="form[phone]"
                placeholder="Ваш телефон"  autocomplete="off" required />
